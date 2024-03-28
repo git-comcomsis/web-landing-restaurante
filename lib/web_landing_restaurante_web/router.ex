@@ -18,6 +18,7 @@ defmodule WebLandingRestauranteWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/contacto", PageController, :contacto
   end
 
   # Other scopes may use custom stacks.
