@@ -3,3 +3,56 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+@media (max-width: 950px) {
+    /* … */
+    .video-fondo {
+        display: none;
+    }
+    .video-fondo-vertical {
+        display: block;
+    }
+    video {
+        width: 950px;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+@media (min-width: 950px) {
+    /* … */
+    .video-fondo {
+        display: block;
+    }
+    .video-fondo-vertical {
+        display: none;
+    }
+    video {
+        width: 1800px;
+        height: 1200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+
+/* 
+@media ( max-width: 1199px) {
+  .video-fondo {
+    display: block;
+  }
+  .video-fondo-vertical {
+    display: none !important;
+  }
+  video {
+    width: auto;
+    height: 120%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+… */
