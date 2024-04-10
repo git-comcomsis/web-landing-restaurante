@@ -48,16 +48,16 @@
 }
 
 .fixed-header.header-down{
-  top: -51px;
+   top: -51px;
 }
 
 .fixed-header.header-up{
-  top: -175px;
+   top: -175px;
 }
 
 .main-header .auto-container{
   max-width: 1780px;
-  padding: 0 20px;
+  padding: 0px;
 }
 
 .header-top{
