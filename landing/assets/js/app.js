@@ -42,3 +42,42 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+ // WARNING: For POST requests, body is set to null by browsers.       
+ let loginForm = document.getElementById("send-message");
+ $('#send-success').fadeOut(1);
+
+ loginForm.addEventListener("submit", (e) => {
+     e.preventDefault();
+     var settings = {
+         "url": "https://us-central1-encouraging-mix-111109.cloudfunctions.net/contact_email/send-message",
+         "method": "POST",
+         "timeout": 0,
+         "headers": {
+             "Content-Type": "application/json"
+         },
+         "data": JSON.stringify({
+             "name": document.getElementById("first-name").value,
+             "email": document.getElementById("email").value,
+             "phone": document.getElementById("phone").value,
+             "message": "Mensaje desde la página: " + document.getElementById("comment").value +
+                 "\n Nombre: " + document.getElementById("first-name").value +
+                 "\n Apellido: " + document.getElementById("last-name").value +
+                 "\n Email: " + document.getElementById("email").value +
+                 "\n Teléfono: " + document.getElementById("phone").value,
+             "token_hash": "d4cb0b2f-ef4b-478c-bca0-0b5f636f63c0"
+         }),
+     };
+     $.ajax(settings).done(function(response) {
+         console.log(response);
+         $('.loading-area').fadeOut(1000);
+         $('#send-success').fadeIn(1000);
+         $('#first-name').val("");
+         $('#last-name').val("");
+         $('#phone').val("");
+         $('#email').val("");
+         $('#comment').val("");
+     });
+ });
+
+ //end of IIFE function
+
