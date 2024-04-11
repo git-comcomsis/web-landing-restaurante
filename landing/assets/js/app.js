@@ -57,13 +57,16 @@ window.liveSocket = liveSocket
          },
          "data": JSON.stringify({
              "name": document.getElementById("first-name").value,
-             "email": document.getElementById("email").value,
+             "persona": document.getElementById("persona").value,
              "phone": document.getElementById("phone").value,
-             "message": "Mensaje desde la página: " + document.getElementById("comment").value +
+             "dia": document.getElementById("dia").value,
+             "hora": document.getElementById("hora").value,
+             "message": "Mensaje desde la página: " + document.getElementById("message").value +
                  "\n Nombre: " + document.getElementById("first-name").value +
-                 "\n Apellido: " + document.getElementById("last-name").value +
-                 "\n Email: " + document.getElementById("email").value +
-                 "\n Teléfono: " + document.getElementById("phone").value,
+                 "\n Persona: " + document.getElementById("persona").value +
+                 "\n Phone: " + document.getElementById("phone").value +
+                 "\n dia: " + document.getElementById("dia").value +
+                 "\n hora: " + document.getElementById("hora").value,
              "token_hash": "d4cb0b2f-ef4b-478c-bca0-0b5f636f63c0"
          }),
      };
@@ -71,11 +74,11 @@ window.liveSocket = liveSocket
          console.log(response);
          $('.loading-area').fadeOut(1000);
          $('#send-success').fadeIn(1000);
-         $('#first-name').val("");
-         $('#last-name').val("");
+         $('#persona').val("");
          $('#phone').val("");
-         $('#email').val("");
-         $('#comment').val("");
+         $('#dia').val("");
+         $('#hora').val("");
+         $('#message').val("");
      });
  });
 

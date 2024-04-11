@@ -13,10 +13,10 @@
         display: block;
     }
     video {
-        width: 950px;
-        height: auto;
+        width: 1050px;
+        height: 1100px;
         position: absolute;
-        top: 0;
+        top: 0!important;
         left: 0;
     }
 }
@@ -31,7 +31,7 @@
     }
     video {
         width: 1800px;
-        height: 1200px;
+        height: 1050px;
         position: absolute;
         top: 0;
         left: 0;

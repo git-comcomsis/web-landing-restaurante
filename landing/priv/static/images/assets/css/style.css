@@ -2805,7 +2805,8 @@ body.visible-sidebar{
 ***/
 
 .reserve-section{
-  position: relative;
+  /*position: relative;*/
+  background-color: #00263a;
 }
 
 .reserve-section:before{
