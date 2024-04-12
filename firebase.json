@@ -1,0 +1,11 @@
+{
+    "hosting": [{
+        "target": "nuo-restaurante",
+        "public": "landing/priv/static",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }]
+}

@@ -1,0 +1,26 @@
+{
+  "projects": {
+    "nuo-restaurante": "encouraging-mix-111109"
+  },
+  "targets": {
+    "encouraging-mix-111109": {
+      "hosting": {
+        "nuo-restaurante": [
+          "nuo-restaurante"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "hosting": [
+    {
+      "target": "nuo-restaurante",
+      "public": "landing/priv/static",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    }
+  ]
+}
