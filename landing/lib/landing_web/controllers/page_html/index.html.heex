@@ -707,3 +707,63 @@
         </div>
     </div>
 </section>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript"> console.log("Hola Mundo"); document.addEventListener("DOMContentLoaded", function evitarRecarga(event) {
+    event.preventDefault(); // Evita el comportamiento por defecto del evento
+    console.log("Se ha evitado la recarga de la página");
+
+
+// Agregar evento de click al enlace
+document.getElementById("link").addEventListener("click", evitarRecarga);
+
+// Agregar evento de click al botón
+document.getElementById("submit").addEventListener("click", evitarRecarga);});
+ let loginForm = document.
+getElementById("send-message");
+    $('#send-success').fadeOut(1);
+    
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.log("Hola Mundo"); 
+        var settings = {
+            "url": "https://us-central1-encouraging-mix-111109.cloudfunctions.net/contact_email/send-message",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+                "name": document.getElementById("first-name").value,
+                "phone": document.getElementById("phone").value,
+                "persona": document.getElementById("persona").value,
+                "dia": document.getElementById("dia").value,
+                "hora": document.getElementById("hora").value,
+                "message": "Mensaje desde la página: " + document.getElementById("comment").value +
+                    "\n Nombre: " + document.getElementById("first-name").value +
+                    "\n Phone: " + document.getElementById("phone").value +
+                    "\n Persona: " + document.getElementById("persona").value +
+                    "\n Dia: " + document.getElementById("dia").value +
+                    "\n Hora: " + document.getElementById("hora").value +
+                    "\n Mensaje: " + document.getElementById("message").value,
+                "token_hash": "355e4347-b638-433c-a30e-d38cbe267e8e"
+            }),
+        };
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            $('.loading-area').fadeOut(1000);
+            $('#send-success').fadeIn(1000);
+            $('#first-name').val("");
+            $('#phone').val("");
+            $('#persona').val("");
+            $('#dia').val("");
+            $('#hora').val("");
+            $('#message').val("");
+        });
+    });
+    console.log("Hola Mundo");
+</script> 

@@ -43,7 +43,7 @@ liveSocket.connect()
 window.liveSocket = liveSocket
 
  // WARNING: For POST requests, body is set to null by browsers.       
- let loginForm = document.getElementById("send-message");
+ /*let loginForm = document.getElementById("send-message");
  $('#send-success').fadeOut(1);
 
  loginForm.addEventListener("submit", (e) => {
@@ -67,13 +67,14 @@ window.liveSocket = liveSocket
                  "\n Phone: " + document.getElementById("phone").value +
                  "\n dia: " + document.getElementById("dia").value +
                  "\n hora: " + document.getElementById("hora").value,
-             "token_hash": "d4cb0b2f-ef4b-478c-bca0-0b5f636f63c0"
+             "token_hash": "355e4347-b638-433c-a30e-d38cbe267e8e"
          }),
      };
      $.ajax(settings).done(function(response) {
          console.log(response);
          $('.loading-area').fadeOut(1000);
          $('#send-success').fadeIn(1000);
+         $('#persona').val("");
          $('#persona').val("");
          $('#phone').val("");
          $('#dia').val("");
@@ -82,5 +83,5 @@ window.liveSocket = liveSocket
      });
  });
 
- //end of IIFE function
+ //end of IIFE function*/
 
