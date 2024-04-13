@@ -513,15 +513,13 @@
                             <h2>Reservación en línea</h2>
                             <div class="request-info">Reserva al <a href="#">777 377 8879</a> o llena el siguiente formulario</div>
                         </div>
-                        <form action="" id="send-message">
                             <div class="row columns_margin_bottom_30 " id="send-success">
                                 <div class="col-sm-12 section_header highlight text-center">
                                     Gracias por tu mensaje.
                                 </div>
-                            </div>
-                        </form>    
+                            </div> 
                         <div class="default-form reservation-form">
-                            <form method="post" action="index.html">
+                            <form id="send-message">
                                 <div class="row clearfix">
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                         <div class="field-inner">
@@ -531,6 +529,11 @@
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                         <div class="field-inner">
                                             <input type="text" name="fieldname" id="phone" value="" placeholder="Número de Celular" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <div class="field-inner">
+                                            <input type="email" name="fieldname" id="email" value="" placeholder="usuario@mail.com" required>
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-6 col-sm-12">
@@ -555,7 +558,7 @@
                                             <span class="arrow-icon far fa-angle-down"></span>
                                         </div>
                                     </div>
-                                    <div class="form-group col-lg-4 col-md-12 col-sm-12">
+                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                         <div class="field-inner">
                                             <span class="alt-icon far fa-clock"></span>
                                             <select class="l-icon" id="hora">
@@ -713,57 +716,48 @@
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
 
-<script type="text/javascript"> console.log("Hola Mundo"); document.addEventListener("DOMContentLoaded", function evitarRecarga(event) {
-    event.preventDefault(); // Evita el comportamiento por defecto del evento
-    console.log("Se ha evitado la recarga de la página");
+<script type="text/javascript"> 
+        let loginForm = document.getElementById("send-message");
+        $('#send-success').fadeOut(1);        
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            var settings = {
+                "url": "https://us-central1-encouraging-mix-111109.cloudfunctions.net/contact_email/send-message",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "name": document.getElementById("first-name").value,
+                    "email": document.getElementById("email").value,
+                    "phone": document.getElementById("phone").value,
+                    "persona": document.getElementById("persona").value,
+                    "dia": document.getElementById("dia").value,
+                    "hora": document.getElementById("hora").value,
+                    "message": "Mensaje desde la página: " + document.getElementById("message").value +
+                        "\n Nombre: " + document.getElementById("first-name").value +
+                        "\n Phone: " + document.getElementById("phone").value +
+                        "\n Persona: " + document.getElementById("persona").value +
+                        "\n Dia: " + document.getElementById("dia").value +
+                        "\n Hora: " + document.getElementById("hora").value +
+                        "\n Mensaje: " + document.getElementById("message").value,
+                    "token_hash": "355e4347-b638-433c-a30e-d38cbe267e8e"
+                }),
+            };
+            console.log("Hola Mundo", settings); 
 
-
-// Agregar evento de click al enlace
-document.getElementById("link").addEventListener("click", evitarRecarga);
-
-// Agregar evento de click al botón
-document.getElementById("submit").addEventListener("click", evitarRecarga);});
- let loginForm = document.
-getElementById("send-message");
-    $('#send-success').fadeOut(1);
-    
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        console.log("Hola Mundo"); 
-        var settings = {
-            "url": "https://us-central1-encouraging-mix-111109.cloudfunctions.net/contact_email/send-message",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "data": JSON.stringify({
-                "name": document.getElementById("first-name").value,
-                "phone": document.getElementById("phone").value,
-                "persona": document.getElementById("persona").value,
-                "dia": document.getElementById("dia").value,
-                "hora": document.getElementById("hora").value,
-                "message": "Mensaje desde la página: " + document.getElementById("comment").value +
-                    "\n Nombre: " + document.getElementById("first-name").value +
-                    "\n Phone: " + document.getElementById("phone").value +
-                    "\n Persona: " + document.getElementById("persona").value +
-                    "\n Dia: " + document.getElementById("dia").value +
-                    "\n Hora: " + document.getElementById("hora").value +
-                    "\n Mensaje: " + document.getElementById("message").value,
-                "token_hash": "355e4347-b638-433c-a30e-d38cbe267e8e"
-            }),
-        };
-        $.ajax(settings).done(function(response) {
-            console.log(response);
-            $('.loading-area').fadeOut(1000);
-            $('#send-success').fadeIn(1000);
-            $('#first-name').val("");
-            $('#phone').val("");
-            $('#persona').val("");
-            $('#dia').val("");
-            $('#hora').val("");
-            $('#message').val("");
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                $('.loading-area').fadeOut(1000);
+                $('#send-success').fadeIn(1000);
+                $('#first-name').val("");
+                $('#phone').val("");
+                $('#persona').val("");
+                $('#dia').val("");
+                $('#hora').val("");
+                $('#message').val("");
+            });
         });
-    });
-    console.log("Hola Mundo");
+        console.log("Hola Mundo");
 </script> 
